@@ -1,0 +1,20 @@
+services:
+  local-postgres-service:
+    container_name: local-postgresql
+    image: postgres:14.21-alpine
+    environment:
+      POSTGRES_USER: postgres_user
+      POSTGRES_PASSWORD: pass123
+      POSTGRES_DB: local-db
+    ports:
+      - "5432:5432"
+    volumes:
+      - local-postgres-volume:/var/lib/postgresql/data
+    networks:
+      - local-postgres-network
+
+volumes:
+  local-postgres-volume:
+
+networks:
+  local-postgres-network:
