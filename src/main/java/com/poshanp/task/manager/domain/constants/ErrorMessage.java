@@ -1,5 +1,8 @@
 package com.poshanp.task.manager.domain.constants;
 
+import lombok.Getter;
+
+@Getter
 public enum ErrorMessage {
 //    Auth Service Errors
     AUTH_USERNAME_ALREADY_EXISTS("User with the given username already exists."),
@@ -22,10 +25,6 @@ public enum ErrorMessage {
     private final String message;
     ErrorMessage(String message) {
         this.message = message;
-    }
-
-    public String getMessage() {
-        return this.message;
     }
 
     @Override

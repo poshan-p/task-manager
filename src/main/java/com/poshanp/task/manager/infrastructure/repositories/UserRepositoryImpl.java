@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserRepositoryImpl implements IUserRepository {
+    private final JpaUserRepo jpaRepo;
 
     @Override
     public User findById(long id) {
