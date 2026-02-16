@@ -1,30 +1,31 @@
 package com.poshanp.task.manager.infrastructure.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.regex.Pattern;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-public class User {
+@Table(name="users")
+public class UserEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column(unique = true)
     private String username;
+    @Column(unique = true)
     private String email;
     private String passwordHash;
     private OffsetDateTime createdAt;
     private OffsetDateTime updatedAt;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Task> tasks;
-
-    private static final Pattern USERNAME_PATTERN = Pattern.compile("^[a-zA-Z][a-zA-Z0-9_]{2,19}$");
-    private static final Pattern EMAIL_PATTERN = Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$");
+    private List<TaskEntity> taskEntities;
 }

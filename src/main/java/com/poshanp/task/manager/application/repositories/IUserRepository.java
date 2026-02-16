@@ -1,4 +1,4 @@
-package com.poshanp.task.manager.application.repository;
+package com.poshanp.task.manager.application.repositories;
 
 import com.poshanp.task.manager.domain.entities.User;
 

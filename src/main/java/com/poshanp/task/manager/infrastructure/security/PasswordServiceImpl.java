@@ -5,7 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BCryptPasswordAdapter implements IPasswordService {
+public class PasswordServiceImpl implements IPasswordService {
     private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     @Override

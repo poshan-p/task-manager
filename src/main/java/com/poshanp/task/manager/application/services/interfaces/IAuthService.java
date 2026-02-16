@@ -13,7 +13,7 @@ public interface IAuthService {
 
     ApiResponse<AuthResponse> refresh(String oldRefreshToken);
 
-    long validateToken(String token);
-
     ApiResponse<UserResponse> getCurrentUser(long userId);
+    ApiResponse<Void> logout(String refreshToken);
+    ApiResponse<Void> logoutAll(Long userId);
 }

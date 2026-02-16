@@ -1,4 +1,4 @@
-package com.poshanp.task.manager.application.repository;
+package com.poshanp.task.manager.application.repositories;
 
 import com.poshanp.task.manager.domain.entities.Task;
 import com.poshanp.task.manager.domain.enums.Status;
@@ -12,6 +12,5 @@ public interface ITaskRepository {
     long countByUserIdAndStatus(long userId, Status status);
     boolean existsByIdAndUserId(Long id, Long userId);
     void deleteByIdAndUserId(Long id, Long userId);
-    Task update(Task task);
     Task save(Task task);
 }

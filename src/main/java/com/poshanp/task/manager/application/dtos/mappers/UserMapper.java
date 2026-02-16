@@ -5,6 +5,8 @@ import com.poshanp.task.manager.application.dtos.response.AuthResponse;
 import com.poshanp.task.manager.application.dtos.response.UserResponse;
 import com.poshanp.task.manager.domain.entities.User;
 
+import java.time.OffsetDateTime;
+
 public class UserMapper {
     public static AuthResponse toAuthResponseDto(User user, String accessToken, String refreshToken) {
         return new AuthResponse(user.getId(),
@@ -30,6 +32,9 @@ public class UserMapper {
         user.setEmail(request.getEmail());
         user.setPasswordHash(hashedPassword);
 
+        OffsetDateTime now = OffsetDateTime.now();
+        user.setCreatedAt(now);
+        user.setUpdatedAt(now);
         return user;
     }
 }

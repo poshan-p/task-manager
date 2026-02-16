@@ -4,8 +4,8 @@ CREATE TABLE IF NOT EXISTS users
     username      varchar(50) UNIQUE  NOT NULL,
     email         varchar(255) UNIQUE NOT NULL,
     password_hash varchar             NOT NULL,
-    created_at    timestamptz DEFAULT now(),
-    updated_at    timestamptz DEFAULT now()
+    created_at    timestamptz DEFAULT now() NOT NULL,
+    updated_at    timestamptz DEFAULT now() NOT NULL
 );
 
 CREATE UNIQUE INDEX IF NOT EXISTS index_users_id ON users (id);
@@ -20,9 +20,9 @@ CREATE TABLE IF NOT EXISTS tasks
     description varchar,
     status      varchar(20) CHECK (status IN ('TODO', 'IN_PROGRESS', 'DONE')),
     priority    varchar(30) CHECK (priority IN ('LOW', 'MEDIUM', 'HIGH')),
-    due_date    date,
-    created_at  timestamptz DEFAULT now(),
-    updated_at  timestamptz DEFAULT now(),
+    due_date    date NOT NULL,
+    created_at  timestamptz DEFAULT now() NOT NULL,
+    updated_at  timestamptz DEFAULT now() NOT NULL,
     CONSTRAINT fk_tasks_users_user_id_id FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
